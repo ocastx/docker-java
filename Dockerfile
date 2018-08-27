@@ -2,10 +2,10 @@
 # Oracle JRE 8 image
 #
 
-FROM 1science/alpine:3.1
+FROM 1science/alpine:3.3
 
 # Java Version
-ENV JAVA_VERSION=8 JAVA_UPDATE=45 JAVA_BUILD=14 JAVA_PACKAGE=server-jre JAVA_HOME=/usr/lib/jvm/default-jvm
+ENV JAVA_VERSION=8 JAVA_UPDATE=181 JAVA_BUILD=13 JAVA_PACKAGE=server-jre JAVA_HOME=/usr/lib/jvm/default-jvm
 
 # Set environment
 ENV PATH=${PATH}:${JAVA_HOME}/bin
@@ -20,7 +20,7 @@ RUN apk add --update libgcc && \
     apk add --allow-untrusted /var/cache/apk/glibc-bin-2.21-r2.apk && \
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
-        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
+        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/96a7b8442fe848ef90c96a2fad6ed6d1/${JAVA_PACKAGE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     tar xzf "${JAVA_PACKAGE}-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     mv "jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" java-${JAVA_VERSION}-oracle && \
     ln -s "java-${JAVA_VERSION}-oracle" $JAVA_HOME && \
